@@ -27,11 +27,11 @@ public class Function
         var client = new HttpClient();
         var webRequest = new HttpRequestMessage(HttpMethod.Post, Environment.GetEnvironmentVariable("SLACK_URL"))
         {
-            content = new StringContent(curPayload, Encoding.UTF8, "application/json")
+            Content = new StringContent(curPayload, Encoding.UTF8, "application/json")
         };
     
         var res = client.Send(webRequest);
-        using var reader = new StreamReader(res.content.ReadAsStream());
+        using var reader = new StreamReader(res.Content.ReadAsStream());
             
         return reader.ReadToEnd();
     }
